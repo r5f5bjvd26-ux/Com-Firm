@@ -83,10 +83,9 @@ import imgFlow  from "./assets/images/com-firm-flow.jpg";
 import imgFun   from "./assets/images/com-firm-fun.png";
 // ── Nieuwe afbeeldingen (batch 2) ──
 import imgHamburg          from "./assets/images/hamburg.jpg";
-import img10jaarcomfirm    from "./assets/images/10jaarcomfirm.jpg";
 import imgSenegal          from "./assets/images/senegal.jpg";
 import imgSportensuport    from "./assets/images/sportensuport.jpg";
-import imgGreatwall        from "./assets/images/greatwall.jpg";
+import imgGreatwall        from "./assets/images/greatwall2.jpg";
 import imgHopdonders       from "./assets/images/hopdonders.jpg";
 import imgSalesforce       from "./assets/images/salesforce.jpg";
 import imgBarcelona        from "./assets/images/barcelona.jpg";
@@ -106,13 +105,34 @@ import imgBouwreiskaapstad from "./assets/images/bouwreiskaapstad.jpg";
 import imgCheetas          from "./assets/images/cheetas.jpg";
 import imgComplimentendag  from "./assets/images/complimentendag.jpg";
 import imgKaapstad3        from "./assets/images/kaapstad3.jpg";
-import imgAlpedhuzedag     from "./assets/images/alpedhuzedag.jpg";
-import imgAlpedhuzesfinal  from "./assets/images/alpedhuzesfinal.jpg";
-import imgAlpedhuzes6x     from "./assets/images/alpedhuzes6x.jpg";
-import imgAlpedhuzes       from "./assets/images/alpedhuzes.jpg";
+import imgAlpedhuzedag     from "./assets/images/ad6_ray_paul.jpg";
+import imgAlpedhuzesfinal  from "./assets/images/opgevenisgeenoptie.jpg";
+import imgAlpedhuzes6x     from "./assets/images/ad6_com-firm.jpg";
+import imgAlpedhuzes       from "./assets/images/ad6_indurain.jpg";
 import imgMercedes         from "./assets/images/mercedes.png";
 import imgBaanbaan         from "./assets/images/baanbaan.png";
 import imgAanleidingcompassie from "./assets/images/aanleidingcompassie.jpg";
+// ── Nieuwe batch afbeeldingen ──
+import imgImg8uo            from "./assets/images/8uo.jpg";
+import imgImgAce            from "./assets/images/ace.jpg";
+import imgImgDownunder      from "./assets/images/downunder.jpg";
+import imgImgHan            from "./assets/images/han.jpg";
+import imgImgOndernemer67   from "./assets/images/ondernemervoordeklas.jpg";
+import imgPhilips4          from "./assets/images/philips4.jpg";
+import imgImgPrenatal       from "./assets/images/prenatal.jpg";
+import imgImgSaxion         from "./assets/images/saxion.jpg";
+import imgImgAlpacas        from "./assets/images/roparun_pette.jpg";
+import img5JaarComfirm      from "./assets/images/5_jaar_com-firm.jpg";
+import imgPhilips3          from "./assets/images/philips3.jpg";
+import imgFreshheads        from "./assets/images/fh.jpg";
+import imgEcontrack         from "./assets/images/econtrack.jpg";
+import imgCoworkfriday      from "./assets/images/coworkfriday.jpg";
+import imgGoeleDoelen       from "./assets/images/goede_doelen.jpg";
+import imgKleineSprong      from "./assets/images/kleine_sprong.jpg";
+import imgSenegalEn         from "./assets/images/senegal_en.jpg";
+import imgTienJaar           from "./assets/images/10_jaar_Com-firm.png";
+import imgH2cMoFarah         from "./assets/images/h2c_mo_farah.png";
+import imgTokyo              from "./assets/images/tokyo.jpg";
 import imgLogoHeineken  from "./assets/images/logo-heineken.png";
 import imgLogoNike      from "./assets/images/logo-nike.png";
 import imgLogoPhilips   from "./assets/images/logo-philips.png";
@@ -148,7 +168,6 @@ const IMG = {
   fun:   imgFun,
   // ── Nieuwe 31 ──
   hamburg:            imgHamburg,
-  "10jaarcomfirm":    img10jaarcomfirm,
   senegal:            imgSenegal,
   sportensuport:      imgSportensuport,
   greatwall:          imgGreatwall,
@@ -178,6 +197,35 @@ const IMG = {
   mercedes:           imgMercedes,
   baanbaan:           imgBaanbaan,
   aanleidingcompassie: imgAanleidingcompassie,
+  // ── Nieuwe batch ──
+  "8uo":               imgImg8uo,
+  "ace":               imgImgAce,
+  "ad6_ray_paul":      imgAlpedhuzedag,
+  "downunder":         imgImgDownunder,
+  "econtrack":         imgPhilips,
+  "fh":                imgPhilips,
+  "han":               imgImgHan,
+  "ondernemervoordeklas": imgImgOndernemer67,
+  "philipsDigital":    imgPhilips,
+  "philips4":          imgPhilips4,
+  "prenatal":          imgImgPrenatal,
+  "saxion":            imgImgSaxion,
+  "roparun_pette":     imgImgAlpacas,
+  "5_jaar_com-firm":   img5JaarComfirm,
+  "philips3":          imgPhilips3,
+  "fh":                imgFreshheads,
+  "econtrack":         imgEcontrack,
+  "coworkfriday":      imgCoworkfriday,
+  "goede_doelen":      imgGoeleDoelen,
+  "kleine_sprong":     imgKleineSprong,
+  "senegal_en":        imgSenegalEn,
+  "10_jaar":           imgTienJaar,
+  "ad6_com-firm":      imgAlpedhuzes6x,
+  "ad6_indurain":      imgAlpedhuzes,
+  "greatwall2":        imgGreatwall,
+  "h2c_mo_farah":      imgH2cMoFarah,
+  "opgevenisgeenoptie": imgAlpedhuzesfinal,
+  "tokyo":             imgTokyo,
   logoHeineken:  imgLogoHeineken,
   logoNike:      imgLogoNike,
   logoPhilips:   imgLogoPhilips,
@@ -224,24 +272,42 @@ const CSS = `
     .two-col, .three-col, .hero-grid { grid-template-columns: 1fr !important; }
     .hero-h1 { font-size: 32px !important; }
     .hide-sm { display: none !important; }
+    .nav-logo { height: 28px !important; }
+    .nav-links { gap: 0 !important; }
+    .nav-link { font-size: 11px !important; padding: 6px 7px !important; }
+    .footer-wrap { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
+    .footer-nav { flex-wrap: wrap !important; gap: 12px !important; }
+    .footer-contact { flex-wrap: wrap !important; gap: 10px !important; }
+    .footer-copy { display: none !important; }
+    .footer-copy-mobile { display: block !important; }
   }
 `;
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
-function useInView(t = 0.12) {
+function useInView(t = 0.05) {
   const ref = useRef(null);
   const [v, setV] = useState(false);
   useEffect(() => {
-    const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: t });
+    // Fallback: show after 300ms if observer never fires
+    const timer = setTimeout(() => setV(true), 300);
+    const o = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setV(true); o.disconnect(); }
+    }, { threshold: t, rootMargin: "0px 0px -40px 0px" });
     if (ref.current) o.observe(ref.current);
-    return () => o.disconnect();
+    return () => { o.disconnect(); clearTimeout(timer); };
   }, []);
   return [ref, v];
 }
 function Reveal({ children, delay = 0, style = {} }) {
   const [ref, v] = useInView();
   return (
-    <div ref={ref} style={{ opacity: v ? 1 : 0, transform: v ? "translateY(0)" : "translateY(22px)", transition: `opacity .6s ${delay}s, transform .6s ${delay}s`, ...style }}>
+    <div ref={ref} style={{
+      opacity: v ? 1 : 0,
+      transform: v ? "translateY(0)" : "translateY(18px)",
+      transition: `opacity .55s ${delay}s ease, transform .55s ${delay}s ease`,
+      willChange: "opacity, transform",
+      ...style
+    }}>
       {children}
     </div>
   );
@@ -250,7 +316,7 @@ const Wrap = ({ children, max = 1100 }) => <div style={{ maxWidth: max, margin: 
 const Eyebrow = ({ t, light }) => <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".16em", textTransform: "uppercase", color: light ? "rgba(255,255,255,.5)" : C.orange, marginBottom: 8 }}>{t}</p>;
 const Rule = () => <div style={{ width: 32, height: 3, background: C.orange, borderRadius: 2, margin: "10px 0 18px" }} />;
 const H2 = ({ children, light, size = 28 }) => <h2 className="serif" style={{ fontSize: size, fontWeight: 600, color: light ? "#fff" : C.navy, lineHeight: 1.2, letterSpacing: "-.01em", marginBottom: 12 }}>{children}</h2>;
-const BodyP = ({ children, muted, style = {} }) => <p style={{ fontSize: 14, lineHeight: 1.85, color: muted ? C.textSm : C.textSm, marginBottom: 14, ...style }}>{children}</p>;
+const BodyP = ({ children, muted, style = {} }) => <p style={{ fontSize: 14, lineHeight: 1.85, color: C.textSm, marginBottom: 14, ...style }}>{children}</p>;
 
 function Photo({ src, alt = "", ratio = "55%", style = {} }) {
   return (
@@ -262,7 +328,9 @@ function Photo({ src, alt = "", ratio = "55%", style = {} }) {
 
 // ─── BLOG POST DATA (from posts.js) ───────────────────────────────────────────
 // Resolve img keys to actual imported image objects
-const ALL_POSTS = POSTS.map(p => ({
+const ALL_POSTS = POSTS
+  .filter(p => p && p.id)
+  .map(p => ({
   ...p,
   img: typeof p.img === "string" && IMG[p.img] ? IMG[p.img] : p.img,
   accent: p.accent || C.orange,
@@ -285,10 +353,11 @@ function Nav({ page, navigate }) {
             <img
               src={IMG.logo}
               alt="Com-Firm"
-              style={{ height: 36, width: "auto", objectFit: "contain", display: "block" }}
+              className="nav-logo"
+              style={{ height: 32, width: "auto", objectFit: "contain", display: "block", filter: "brightness(0) invert(1)" }}
             />
           </div>
-          <div style={{ display: "flex", gap: 2 }}>
+          <div className="nav-links" style={{ display: "flex", gap: 2 }}>
             {NAV_LINKS.map(l => (
               <span key={l.page} className={`nav-link${page === l.page ? " active" : ""}`} onClick={() => navigate(l.page)}>{l.label}</span>
             ))}
@@ -304,8 +373,8 @@ function Footer({ navigate }) {
   return (
     <footer style={{ background: C.navyDk, padding: "18px 24px" }}>
       <Wrap>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-          <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
+        <div className="footer-wrap" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+          <div className="footer-nav" style={{ display: "flex", gap: 24, alignItems: "center" }}>
             {NAV_LINKS.map(l => (
               <span key={l.page}
                 style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,.4)", cursor: "pointer", transition: "color .15s", whiteSpace: "nowrap" }}
@@ -314,14 +383,16 @@ function Footer({ navigate }) {
                 onClick={() => navigate(l.page)}>{l.label}</span>
             ))}
           </div>
-          <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+          <div className="footer-contact" style={{ display: "flex", gap: 20, alignItems: "center" }}>
             <a href="mailto:paul@com-firm.com" style={{ fontSize: 12, color: "rgba(255,255,255,.4)", textDecoration: "none", transition: "color .15s" }}
               onMouseEnter={e => e.target.style.color = C.orange} onMouseLeave={e => e.target.style.color = "rgba(255,255,255,.4)"}>paul@com-firm.com</a>
             <a href="https://www.linkedin.com/in/ptendonkelaar" target="_blank" rel="noreferrer" style={{ fontSize: 12, color: "rgba(255,255,255,.4)", textDecoration: "none", transition: "color .15s" }}
               onMouseEnter={e => e.target.style.color = C.orange} onMouseLeave={e => e.target.style.color = "rgba(255,255,255,.4)"}>LinkedIn →</a>
-            <p style={{ fontSize: 11, color: "rgba(255,255,255,.2)" }}>© 2026 Com-Firm · Paul ten Donkelaar</p>
+            <p className="footer-copy" style={{ fontSize: 11, color: "rgba(255,255,255,.2)" }}>© 2026 Com-Firm · Paul ten Donkelaar</p>
           </div>
         </div>
+        {/* Copyright op aparte regel op mobiel */}
+        <p style={{ fontSize: 11, color: "rgba(255,255,255,.2)", marginTop: 8, display: "none" }} className="footer-copy-mobile">© 2026 Com-Firm · Paul ten Donkelaar</p>
       </Wrap>
     </footer>
   );
@@ -329,18 +400,19 @@ function Footer({ navigate }) {
 
 // ─── BLOG POST SHELL ──────────────────────────────────────────────────────────
 function PostShell({ id, navigate, children }) {
-  const post = ALL_POSTS.find(p => p.id === id);
-  const related = ALL_POSTS.filter(p => p.id !== id).slice(0, 4);
+  const post = ALL_POSTS.find(p => p && p.id === id);
+  if (!post) return <div style={{ padding: "100px 24px", textAlign: "center" }}><p>Post niet gevonden.</p></div>;
+  const related = ALL_POSTS.filter(p => p && p.id !== id).slice(0, 4);
   return (
     <div style={{ paddingTop: 58 }}>
-      <div style={{ position: "relative", height: 380, overflow: "hidden" }}>
-        <img src={post.img} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(.45)" }} />
+      <div style={{ position: "relative", height: 380, overflow: "hidden", background: "#1B2A4A" }}>
+        {post.img && <img src={post.img} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(.45)" }} />}
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: post.accent }} />
         <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", padding: "0 24px 40px" }}>
           <div style={{ maxWidth: 800 }}>
             <button onClick={() => navigate("blog")} style={{ background: "rgba(255,255,255,.15)", border: "1px solid rgba(255,255,255,.3)", color: "#fff", padding: "5px 12px", fontSize: 11, fontWeight: 500, letterSpacing: ".06em", cursor: "pointer", borderRadius: 4, marginBottom: 18, fontFamily: "'Inter',sans-serif" }}>← Terug naar blog</button>
             <h1 className="serif" style={{ fontSize: 38, fontWeight: 600, color: "#fff", lineHeight: 1.2, letterSpacing: "-.02em", marginBottom: 12, textShadow: "0 2px 12px rgba(0,0,0,.5)" }}>{post.title}</h1>
-            <p style={{ fontSize: 13, color: "rgba(255,255,255,.7)", fontWeight: 500 }}>{post.date} · {post.readTime} lezen · Paul ten Donkelaar</p>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,.7)", fontWeight: 500 }}>{post.date} · Paul ten Donkelaar</p>
           </div>
         </div>
       </div>
@@ -360,7 +432,7 @@ function PostShell({ id, navigate, children }) {
               <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: C.textXs, marginBottom: 12 }}>Andere posts</p>
               {related.map(r => (
                 <div key={r.id} style={{ display: "flex", gap: 10, marginBottom: 14, cursor: "pointer", paddingBottom: 14, borderBottom: `1px solid ${C.border}` }} onClick={() => navigate("post-" + r.id)}>
-                  <img src={r.img} alt={r.title} style={{ width: 52, height: 38, objectFit: "cover", flexShrink: 0, borderRadius: 4 }} />
+                  {r.img && <img src={r.img} alt={r.title} style={{ width: 52, height: 38, objectFit: "cover", flexShrink: 0, borderRadius: 4 }} onError={e => e.target.style.display="none"} />}
                   <div>
                     <p style={{ fontSize: 11, color: r.accent, fontWeight: 500, marginBottom: 2 }}>{r.date}</p>
                     <p style={{ fontSize: 12, lineHeight: 1.4, color: C.navy, fontWeight: 500 }}>{r.title}</p>
@@ -384,19 +456,20 @@ function AQ({ children, accent = C.orange }) { return <blockquote style={{ borde
 
 // ─── GENERIC POST PAGE (renders any post from posts.js by id) ─────────────────
 function PostPage({ id, navigate }) {
-  const post = ALL_POSTS.find(p => p.id === id);
+  const post = ALL_POSTS.find(p => p && p.id === id);
   if (!post) return <div style={{ padding: "100px 24px", textAlign: "center" }}><p>Post niet gevonden.</p></div>;
-  const related = ALL_POSTS.filter(p => p.id !== id).slice(0, 4);
+  const postImg = typeof post.img === "string" ? post.img : null;
+  const related = ALL_POSTS.filter(p => p && p.id !== id).slice(0, 4);
   return (
     <div style={{ paddingTop: 58 }}>
-      <div style={{ position: "relative", height: 380, overflow: "hidden" }}>
-        <img src={post.img} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(.45)" }} />
+      <div style={{ position: "relative", height: 380, overflow: "hidden", background: "#1B2A4A" }}>
+        {post.img && <img src={post.img} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(.45)" }} />}
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: post.accent }} />
         <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", padding: "0 24px 40px" }}>
           <div style={{ maxWidth: 800 }}>
             <button onClick={() => navigate("blog")} style={{ background: "rgba(255,255,255,.15)", border: "1px solid rgba(255,255,255,.3)", color: "#fff", padding: "5px 12px", fontSize: 11, fontWeight: 500, cursor: "pointer", borderRadius: 4, marginBottom: 18, fontFamily: "'Inter',sans-serif" }}>← Terug naar blog</button>
             <h1 className="serif" style={{ fontSize: 38, fontWeight: 600, color: "#fff", lineHeight: 1.2, letterSpacing: "-.02em", marginBottom: 12, textShadow: "0 2px 12px rgba(0,0,0,.5)" }}>{post.title}</h1>
-            <p style={{ fontSize: 13, color: "rgba(255,255,255,.7)", fontWeight: 500 }}>{post.date} · {post.readTime} lezen · Paul ten Donkelaar</p>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,.7)", fontWeight: 500 }}>{post.date} · Paul ten Donkelaar</p>
           </div>
         </div>
       </div>
@@ -414,7 +487,7 @@ function PostPage({ id, navigate }) {
               <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: C.textXs, marginBottom: 12 }}>Andere posts</p>
               {related.map(r => (
                 <div key={r.id} style={{ display: "flex", gap: 10, marginBottom: 14, cursor: "pointer", paddingBottom: 14, borderBottom: `1px solid ${C.border}` }} onClick={() => navigate("post-" + r.id)}>
-                  <img src={r.img} alt={r.title} style={{ width: 52, height: 38, objectFit: "cover", flexShrink: 0, borderRadius: 4 }} />
+                  {r.img && <img src={r.img} alt={r.title} style={{ width: 52, height: 38, objectFit: "cover", flexShrink: 0, borderRadius: 4 }} onError={e => e.target.style.display="none"} />}
                   <div>
                     <p style={{ fontSize: 11, color: r.accent, fontWeight: 500, marginBottom: 2 }}>{r.date}</p>
                     <p style={{ fontSize: 12, lineHeight: 1.4, color: C.navy, fontWeight: 500 }}>{r.title}</p>
@@ -740,7 +813,7 @@ function PageHome({ navigate }) {
         {/* Subtiele cirkels */}
         <div style={{ position: "absolute", right: -80, top: "5%", width: 500, height: 500, borderRadius: "50%", border: "1px solid rgba(232,98,10,.12)", pointerEvents: "none" }} />
         <Wrap style={{ position: "relative", zIndex: 1, width: "100%" }}>
-          <div style={{ maxWidth: 640, padding: "72px 0" }}>
+          <div style={{ maxWidth: 640, padding: "72px 0 56px" }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".16em", textTransform: "uppercase", color: C.orange, marginBottom: 16, animation: "fadeUp .7s .1s both" }}>Focus · Flow · Fun</p>
             <h1 className="hero-h1 serif" style={{ fontSize: 54, fontWeight: 600, lineHeight: 1.1, color: "#fff", letterSpacing: "-.02em", marginBottom: 20, animation: "fadeUp .7s .25s both" }}>
               Samenwerken aan<br /><em style={{ color: C.orange, fontStyle: "italic" }}>digitale transformatie</em>
@@ -748,6 +821,11 @@ function PageHome({ navigate }) {
             <p style={{ fontSize: 19, color: "rgba(255,255,255,.7)", fontStyle: "italic", maxWidth: 480, lineHeight: 1.75, fontFamily: "'Playfair Display',serif", animation: "fadeUp .7s .4s both" }}>
               "If you want to go fast, go alone —<br />if you want to go far, go together."
             </p>
+          </div>
+          {/* Scroll indicator */}
+          <div style={{ position: "absolute", bottom: 20, left: 24, display: "flex", alignItems: "center", gap: 10, animation: "fadeUp .7s .8s both" }}>
+            <div style={{ width: 1, height: 32, background: "rgba(255,255,255,.25)" }} />
+            <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: ".15em", textTransform: "uppercase", color: "rgba(255,255,255,.35)" }}>Scroll</p>
           </div>
         </Wrap>
       </section>
@@ -758,15 +836,56 @@ function PageHome({ navigate }) {
           <Reveal><Eyebrow t="Werkwijze" /><H2>Mijn drie pijlers</H2><Rule /></Reveal>
           <div className="three-col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18, marginTop: 8 }}>
             {PILLARS.map((p, i) => (
-              <Reveal key={p.key} delay={i * .1}>
-                <div style={{ background: hov === p.key ? p.bg : C.gray, border: `1.5px solid ${hov === p.key ? p.color + "50" : C.border}`, borderTop: `3px solid ${p.color}`, borderRadius: 8, overflow: "hidden", transition: "all .25s", transform: hov === p.key ? "translateY(-5px)" : "none" }}
-                  onMouseEnter={() => setHov(p.key)} onMouseLeave={() => setHov(null)}>
-                  <div style={{ height: 180, overflow: "hidden" }}>
-                    <img src={[IMG.focus, IMG.flow, IMG.fun][i]} alt={p.key} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", transition: "transform .4s", transform: hov === p.key ? "scale(1.05)" : "scale(1)" }} />
+              <div key={p.key} style={{
+                background: hov === p.key ? p.bg : C.gray,
+                border: `1.5px solid ${hov === p.key ? p.color + "50" : C.border}`,
+                borderTop: `3px solid ${p.color}`,
+                borderRadius: 8,
+                overflow: "hidden",
+                transition: "all .25s",
+                transform: hov === p.key ? "translateY(-5px)" : "none",
+                cursor: "default",
+              }}
+                onMouseEnter={() => setHov(p.key)} onMouseLeave={() => setHov(null)}>
+                <div style={{ height: 180, overflow: "hidden" }}>
+                  <img src={[IMG.focus, IMG.flow, IMG.fun][i]} alt={p.key} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", transition: "transform .4s", transform: hov === p.key ? "scale(1.05)" : "scale(1)" }} />
+                </div>
+                <div style={{ padding: "20px 20px 22px" }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: p.color, marginBottom: 10, letterSpacing: "-.01em" }}>{p.key}</h3>
+                  <p style={{ fontSize: 13, lineHeight: 1.8, color: C.textSm }}>{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Wrap>
+      </section>
+
+      {/* INSPIRATIE & TRANSPIRATIE */}
+      <section style={{ background: C.navy, padding: "80px 24px" }}>
+        <Wrap>
+          <Reveal>
+            <Eyebrow t="Inspiratie & Transpiratie" light />
+            <H2 light size={36}>Kijk, luister & voel</H2>
+          </Reveal>
+          <div className="three-col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginTop: 32 }}>
+            {[
+              { title: "Dream big!", url: "https://www.youtube.com/embed/lomlpJREDzw?start=125" },
+              { title: "Bagan Temple Marathon", url: "https://www.youtube.com/embed/OrXuaUYKjNs?start=2" },
+              { title: "Great Wall Marathon", url: "https://www.youtube.com/embed/fsji_EHxCLI" },
+            ].map((v, i) => (
+              <Reveal key={v.title} delay={i * .1}>
+                <div style={{ borderRadius: 8, overflow: "hidden", border: `1px solid rgba(255,255,255,.1)` }}>
+                  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+                    <iframe
+                      src={v.url}
+                      title={v.title}
+                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
-                  <div style={{ padding: "20px 20px 22px" }}>
-                    <h3 style={{ fontSize: 18, fontWeight: 700, color: p.color, marginBottom: 10, letterSpacing: "-.01em" }}>{p.key}</h3>
-                    <p style={{ fontSize: 13, lineHeight: 1.8, color: C.textSm }}>{p.desc}</p>
+                  <div style={{ padding: "12px 16px", background: "rgba(255,255,255,.05)" }}>
+                    <p style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,.8)" }}>{v.title}</p>
                   </div>
                 </div>
               </Reveal>
@@ -785,12 +904,12 @@ function PageHome({ navigate }) {
             </div>
           </Reveal>
           <div className="three-col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18 }}>
-            {ALL_POSTS.slice(0, 3).map((p, i) => (
+            {ALL_POSTS.filter(p => p && p.id).slice(0, 3).map((p, i) => (
               <Reveal key={p.id} delay={i * .08}>
                 <div className="card-hover" style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 8, overflow: "hidden" }} onClick={() => navigate("post-" + p.id)}>
                   <Photo src={p.img} alt={p.title} ratio="58%" />
                   <div style={{ padding: "16px 18px 20px", borderTop: `3px solid ${p.accent}` }}>
-                    <p style={{ fontSize: 11, color: p.accent, fontWeight: 500, letterSpacing: ".06em", marginBottom: 6 }}>{p.date} · {p.readTime} lezen</p>
+                    <p style={{ fontSize: 11, color: p.accent, fontWeight: 500, letterSpacing: ".06em", marginBottom: 6 }}>{p.date}</p>
                     <h3 style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.4, color: C.navy, marginBottom: 8 }}>{p.title}</h3>
                     <p style={{ fontSize: 12, color: C.textSm, lineHeight: 1.6 }}>{p.excerpt}</p>
                   </div>
@@ -832,16 +951,12 @@ function PageHome({ navigate }) {
 function PageOver({ navigate }) {
   return (
     <div style={{ paddingTop: 58 }}>
-      <div style={{ position: "relative", height: 420, overflow: "hidden" }}>
-        <img src={IMG.paul} alt="Paul ten Donkelaar" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", filter: "brightness(.4)" }} />
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: C.orange }} />
-        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", padding: "0 24px 48px" }}>
-          <Wrap>
-            <Eyebrow t="Over" light />
-            <h1 className="serif" style={{ fontSize: 48, fontWeight: 600, color: "#fff", letterSpacing: "-.02em", textShadow: "0 2px 14px rgba(0,0,0,.5)" }}>Paul ten Donkelaar</h1>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,.7)", fontStyle: "italic", marginTop: 8 }}>Digital Project Manager · Scrum Master · Marathonloper</p>
-          </Wrap>
-        </div>
+      <div style={{ background: C.navy, padding: "72px 24px 52px", borderBottom: `2px solid ${C.orange}` }}>
+        <Wrap><Reveal>
+          <Eyebrow t="Over" light />
+          <H2 light size={40}>Paul ten Donkelaar</H2>
+          <p style={{ fontSize: 15, color: "rgba(255,255,255,.65)", fontStyle: "italic" }}>Digital Project Manager · Scrum Master · Marathonloper</p>
+        </Reveal></Wrap>
       </div>
 
       <section style={{ background: C.white, padding: "72px 24px" }}>
@@ -967,10 +1082,10 @@ const PROJECTS = [
 function PageProjecten({ navigate }) {
   return (
     <div style={{ paddingTop: 58 }}>
-      <div style={{ background: C.navy, padding: "72px 24px 52px" }}>
+      <div style={{ background: C.navy, padding: "72px 24px 52px", borderBottom: `2px solid ${C.orange}` }}>
         <Wrap><Reveal>
           <Eyebrow t="Projecten" light />
-          <H2 light size={42}>Digitale transformatie</H2>
+          <H2 light size={40}>Digitale transformatie</H2>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,.65)", fontStyle: "italic" }}>Mens-, waarde- en resultaatgericht</p>
         </Reveal></Wrap>
       </div>
@@ -1029,11 +1144,15 @@ function PageProjecten({ navigate }) {
 // ─── PAGE: BLOG ───────────────────────────────────────────────────────────────
 function PageBlog({ navigate }) {
   const [cat, setCat] = useState("Alle blogs");
-  const filtered = cat === "Alle blogs" ? ALL_POSTS : ALL_POSTS.filter(p => p.cats.includes(cat));
+  const filtered = cat === "Alle blogs" ? ALL_POSTS : ALL_POSTS.filter(p => p && p.cats && p.cats.includes(cat));
   return (
     <div style={{ paddingTop: 58 }}>
-      <div style={{ background: C.navy, padding: "64px 24px 44px", borderBottom: `4px solid ${C.orange}` }}>
-        <Wrap><Reveal><Eyebrow t="Blog" light /><H2 light size={38}>Inzichten & verhalen</H2></Reveal></Wrap>
+      <div style={{ background: C.navy, padding: "72px 24px 52px", borderBottom: `2px solid ${C.orange}` }}>
+        <Wrap><Reveal>
+          <Eyebrow t="Blog" light />
+          <H2 light size={40}>Inzichten & verhalen</H2>
+          <p style={{ fontSize: 15, color: "rgba(255,255,255,.65)", fontStyle: "italic" }}>Focus, flow en fun — in woord en beeld</p>
+        </Reveal></Wrap>
       </div>
       <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "0 24px" }}>
         <Wrap>
@@ -1054,7 +1173,7 @@ function PageBlog({ navigate }) {
                   <div style={{ padding: "16px 18px 20px", borderTop: `3px solid ${p.accent}` }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
                       <p style={{ fontSize: 11, color: p.accent, fontWeight: 500 }}>{p.date}</p>
-                      <p style={{ fontSize: 11, color: C.textXs }}>{p.readTime} lezen</p>
+                      
                     </div>
                     <h3 style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: C.navy, marginBottom: 8 }}>{p.title}</h3>
                     <p style={{ fontSize: 12, color: C.textSm, lineHeight: 1.6, marginBottom: 12 }}>{p.excerpt}</p>
@@ -1221,7 +1340,7 @@ export default function App() {
         // Dynamic post routing — any "post-{id}" is handled here
         if (page.startsWith("post-")) {
           const id = page.replace("post-", "");
-          const found = ALL_POSTS.find(p => p.id === id);
+          const found = ALL_POSTS.find(p => p && p.id === id);
           if (found) return <PostPage id={id} navigate={navigate} />;
         }
         return <PageHome navigate={navigate} />;
