@@ -123,6 +123,9 @@ import imgImgPrenatal       from "./assets/images/prenatal.jpg";
 import imgImgSaxion         from "./assets/images/saxion.jpg";
 import imgImgAlpacas        from "./assets/images/roparun_pette.jpg";
 import img5JaarComfirm      from "./assets/images/5_jaar_com-firm.jpg";
+import imgPaulTen           from "./assets/images/paul_ten.jpg";
+import imgPhilipsTeam       from "./assets/images/philips_team.jpg";
+import imgLogoWit           from "./assets/images/logo-wit-transparant.png";
 import imgPhilips3          from "./assets/images/philips3.jpg";
 import imgFreshheads        from "./assets/images/fh.jpg";
 import imgEcontrack         from "./assets/images/econtrack.jpg";
@@ -212,6 +215,9 @@ const IMG = {
   "saxion":            imgImgSaxion,
   "roparun_pette":     imgImgAlpacas,
   "5_jaar_com-firm":   img5JaarComfirm,
+  "paul_ten":          imgPaulTen,
+  "philips_team":      imgPhilipsTeam,
+  "logoWit":           imgLogoWit,
   "philips3":          imgPhilips3,
   "fh":                imgFreshheads,
   "econtrack":         imgEcontrack,
@@ -275,11 +281,13 @@ const CSS = `
     .nav-logo { height: 28px !important; }
     .nav-links { gap: 0 !important; }
     .nav-link { font-size: 11px !important; padding: 6px 7px !important; }
-    .footer-wrap { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
-    .footer-nav { flex-wrap: wrap !important; gap: 12px !important; }
-    .footer-contact { flex-wrap: wrap !important; gap: 10px !important; }
+    .footer-wrap { flex-direction: column !important; align-items: center !important; gap: 10px !important; text-align: center !important; }
+    .footer-nav { flex-wrap: wrap !important; gap: 12px !important; justify-content: center !important; }
+    .footer-contact { flex-wrap: wrap !important; gap: 10px !important; justify-content: center !important; }
     .footer-copy { display: none !important; }
-    .footer-copy-mobile { display: block !important; }
+    .footer-copy-mobile { display: block !important; text-align: center !important; }
+    .four-col { grid-template-columns: 1fr 1fr !important; }
+    .four-col > div:last-child { grid-column: 1 / 3 !important; border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,.25) !important; padding-top: 20px !important; }
   }
 `;
 
@@ -351,10 +359,10 @@ function Nav({ page, navigate }) {
         <div style={{ height: 58, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }} onClick={() => navigate("home")}>
             <img
-              src={IMG.logo}
+              src={IMG.logoWit}
               alt="Com-Firm"
               className="nav-logo"
-              style={{ height: 32, width: "auto", objectFit: "contain", display: "block", filter: "brightness(0) invert(1)" }}
+              style={{ height: 32, width: "auto", objectFit: "contain", display: "block" }}
             />
           </div>
           <div className="nav-links" style={{ display: "flex", gap: 2 }}>
@@ -807,7 +815,7 @@ function PageHome({ navigate }) {
       {/* HERO */}
       <section style={{ minHeight: "82vh", display: "flex", alignItems: "center", paddingTop: 58, position: "relative", overflow: "hidden" }}>
         {/* Achtergrond afbeelding */}
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${IMG.digitaletransformatie})`, backgroundSize: "cover", backgroundPosition: "center 30%", backgroundRepeat: "no-repeat" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${IMG.digitaletransformatie})`, backgroundSize: "cover", backgroundPosition: "70% 30%", backgroundRepeat: "no-repeat" }} />
         {/* Overlay voor leesbaarheid */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(100deg, rgba(17,29,51,.92) 0%, rgba(17,29,51,.75) 55%, rgba(17,29,51,.3) 100%)" }} />
         {/* Subtiele cirkels */}
@@ -855,40 +863,6 @@ function PageHome({ navigate }) {
                   <p style={{ fontSize: 13, lineHeight: 1.8, color: C.textSm }}>{p.desc}</p>
                 </div>
               </div>
-            ))}
-          </div>
-        </Wrap>
-      </section>
-
-      {/* INSPIRATIE & TRANSPIRATIE */}
-      <section style={{ background: C.navy, padding: "80px 24px" }}>
-        <Wrap>
-          <Reveal>
-            <Eyebrow t="Inspiratie & Transpiratie" light />
-            <H2 light size={36}>Kijk, luister & voel</H2>
-          </Reveal>
-          <div className="three-col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginTop: 32 }}>
-            {[
-              { title: "Dream big!", url: "https://www.youtube.com/embed/lomlpJREDzw?start=125" },
-              { title: "Bagan Temple Marathon", url: "https://www.youtube.com/embed/OrXuaUYKjNs?start=2" },
-              { title: "Great Wall Marathon", url: "https://www.youtube.com/embed/fsji_EHxCLI" },
-            ].map((v, i) => (
-              <Reveal key={v.title} delay={i * .1}>
-                <div style={{ borderRadius: 8, overflow: "hidden", border: `1px solid rgba(255,255,255,.1)` }}>
-                  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
-                    <iframe
-                      src={v.url}
-                      title={v.title}
-                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                  <div style={{ padding: "12px 16px", background: "rgba(255,255,255,.05)" }}>
-                    <p style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,.8)" }}>{v.title}</p>
-                  </div>
-                </div>
-              </Reveal>
             ))}
           </div>
         </Wrap>
@@ -955,7 +929,7 @@ function PageOver({ navigate }) {
         <Wrap><Reveal>
           <Eyebrow t="Over" light />
           <H2 light size={40}>Paul ten Donkelaar</H2>
-          <p style={{ fontSize: 15, color: "rgba(255,255,255,.65)", fontStyle: "italic" }}>Digital Project Manager · Scrum Master · Marathonloper</p>
+          <p style={{ fontSize: 15, color: "rgba(255,255,255,.65)", fontStyle: "italic" }}>Programma / Project Manager · Scrum Master · Marathonloper</p>
         </Reveal></Wrap>
       </div>
 
@@ -964,9 +938,9 @@ function PageOver({ navigate }) {
           <div className="two-col" style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: 56, alignItems: "start" }}>
             <Reveal>
               <Eyebrow t="Biografie" /><H2>Wie is Paul?</H2><Rule />
-              <BodyP>Eind vorige eeuw bij Baan begonnen, uiteindelijk global verantwoordelijk voor Digital. Na 6 jaar de stap naar Mercedes-Benz voor grootschalige digitale transformatie.</BodyP>
-              <BodyP>Sinds 2009 als freelancer bij Philips, Nike en Heineken als DPM / Scrum Master uitdagende projecten succesvol afgerond.</BodyP>
-              <BodyP>Inmiddels 19 marathons gelopen, waaronder een sub3 in Valencia (2:59:31). Tuinier, vrijwilliger en fan van lekker eten met familie en vrienden en reizen.</BodyP>
+              <BodyP>Eind vorige eeuw bij Baan begonnen, uiteindelijk global verantwoordelijk voor Digital. Na 6 jaar de stap naar Mercedes-Benz voor een grootschalige digitale transformatie.</BodyP>
+              <BodyP>Sinds 2009 als freelancer bij o.a. Philips, Nike en Heineken als Programma/Project Manager / Scrum Master uitdagende digitale programma's en projecten succesvol afgerond.</BodyP>
+              <BodyP>Inmiddels 28 marathons gelopen, waaronder een sub3 in Valencia. Fan van mooie reizen en lekker eten met familie en vrienden.</BodyP>
               <blockquote style={{ borderLeft: `3px solid ${C.orange}`, paddingLeft: 20, margin: "24px 0" }}>
                 <p className="serif" style={{ fontSize: 20, fontStyle: "italic", color: C.navy, marginBottom: 6 }}>"No human is limited."</p>
                 <small style={{ fontSize: 11, color: C.textXs, letterSpacing: ".1em", fontWeight: 600 }}>— ELIUD KIPCHOGE</small>
@@ -981,10 +955,10 @@ function PageOver({ navigate }) {
             <Reveal delay={.15}>
               {/* Paul foto */}
               <div style={{ position: "relative", marginBottom: 16, borderRadius: 8, overflow: "hidden" }}>
-                <img src={IMG.paul} alt="Paul ten Donkelaar" style={{ width: "100%", height: 340, objectFit: "cover", objectPosition: "center top", display: "block" }} />
+                <img src={IMG.paul_ten || IMG.paul} alt="Paul ten Donkelaar" style={{ width: "100%", height: 340, objectFit: "cover", objectPosition: "center top", display: "block" }} />
                 <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(17,29,51,.85), transparent)", padding: "28px 18px 16px" }}>
                   <p style={{ color: "#fff", fontSize: 15, fontWeight: 600 }}>Paul ten Donkelaar</p>
-                  <p style={{ color: "rgba(255,255,255,.65)", fontSize: 12 }}>Digital Project Manager · Scrum Master</p>
+                  <p style={{ color: "rgba(255,255,255,.65)", fontSize: 12 }}>Programma / Project Manager · Scrum Master</p>
                 </div>
               </div>
               <div style={{ background: C.navy, padding: "20px 24px", borderRadius: 8, color: "#fff", marginBottom: 10 }}>
@@ -992,37 +966,52 @@ function PageOver({ navigate }) {
                 <div className="serif" style={{ fontSize: 40, fontWeight: 600, lineHeight: 1 }}>2009</div>
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,.55)", marginTop: 5 }}>Hartje kredietcrisis — en nooit meer omgekeken.</div>
               </div>
-              {[["25+", "jaar digitale ervaring"], ["19", "marathons gelopen"], ["2:59:31", "sub3 Valencia 2023"]].map(([n, l]) => (
-                <div key={l} style={{ background: C.navyXl, border: `1px solid ${C.border}`, borderRadius: 6, padding: "12px 16px", marginBottom: 10, display: "flex", alignItems: "center", gap: 14 }}>
-                  <span className="serif" style={{ fontSize: 20, fontWeight: 600, color: C.navy, minWidth: 60 }}>{n}</span>
-                  <span style={{ fontSize: 12, color: C.textSm }}>{l}</span>
-                </div>
-              ))}
+              {[["25+", "jaar digitale ervaring"], ["50+", "jaar levenservaring"], ["∞", "still learning"]].map(([n, l]) => null)}
             </Reveal>
           </div>
         </Wrap>
       </section>
+
+      {/* STATS STRIP */}
+      <div style={{ background: C.orange, padding: "56px 24px" }}>
+        <Wrap>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 28, alignItems: "center" }} className="four-col">
+            {[["25+", "jaar digitale ervaring"], ["50+", "jaar levenservaring"]].map(([n, l]) => (
+              <div key={l} style={{ textAlign: "center" }}>
+                <p className="serif" style={{ fontSize: 52, fontWeight: 600, color: "#fff", lineHeight: 1 }}>{n}</p>
+                <p style={{ fontSize: 11, color: "rgba(255,255,255,.8)", marginTop: 8, fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase" }}>{l}</p>
+              </div>
+            ))}
+            <div style={{ gridColumn: "3 / 5", borderLeft: "1px solid rgba(255,255,255,.25)", paddingLeft: 32 }}>
+              <p className="serif" style={{ fontSize: 24, fontStyle: "italic", color: "#fff", lineHeight: 1.5, fontWeight: 500 }}>
+                "Still learning every day from everyone!"
+              </p>
+              <p style={{ fontSize: 40, color: "rgba(255,255,255,.6)", marginTop: 12, lineHeight: 1 }}>∞</p>
+            </div>
+          </div>
+        </Wrap>
+      </div>
 
       {/* Timeline */}
       <section style={{ background: C.gray, padding: "72px 24px" }}>
         <Wrap max={760}>
           <Reveal><Eyebrow t="Loopbaan" /><H2>Tijdlijn</H2><Rule /></Reveal>
           {[
-            { y: "2023 →", c: C.orange, l: "Bidfood", d: "Replatforming programma als Digital Project Manager." },
-            { y: "2022–2023", c: C.orange, l: "Heineken — Digitale B(r)ouwers", d: "Scrum Master voor MijnZaak, MijnKlant en HeinekenHoreca.nl. 50+ features in 1,5 jaar." },
+            { y: "2024 →", c: C.orange, l: "Bidfood", d: "Replatforming programma als Programma Manager." },
+            { y: "2023–2024", c: C.orange, l: "Heineken — Digitale B(r)ouwers", d: "50+ features in 1,5 jaar op verschillende Heineken Horeca Platformen." },
             { y: "2022", c: C.navy, l: "Heineken — Horecashop & SWO", d: "16 webshops geïntegreerd; E2E dealmaking-oplossing live gebracht." },
             { y: "2018–2022", c: C.navy, l: "Nike EMEA & APLA", d: "Cybersecurity team van 4 naar 17 specialisten. Honderden assessments en audits." },
             { y: "2017–2018", c: C.navy, l: "FrieslandCampina", d: "Digitale transformatie voor melkveehouders: Weidegangkalender, Melkapp, Melkweb 2.0." },
-            { y: "2009–2017", c: C.navy, l: "Philips", d: "eCommerce programma en diverse digitale transformatie projecten." },
-            { y: "2003–2009", c: C.textXs, l: "Mercedes-Benz", d: "Digitale transformatie op Europees niveau." },
-            { y: "1997–2003", c: C.textXs, l: "Baan Company", d: "Van junior naar global verantwoordelijke voor Digital." },
+            { y: "2009–2017", c: C.navy, l: "Philips · Prenatal · Chrysler · Jeep · HAN · Tilburg University", d: "eCommerce programma en diverse digitale transformatie projecten." },
+            { y: "2005–2009", c: C.textXs, l: "Mercedes-Benz · Maybach · smart · Chrysler · Jeep · Dodge", d: "Digitale transformatie op Europees niveau." },
+            { y: "1999–2005", c: C.textXs, l: "Baan en SSA Global", d: "Van broekie naar global verantwoordelijke voor Digital." },
           ].map((e, i) => (
             <Reveal key={e.l} delay={i * .05}>
               <div style={{ display: "flex", gap: 20, paddingBottom: 22, borderBottom: `1px solid ${C.border}`, marginBottom: 22 }}>
-                <div style={{ minWidth: 88, fontSize: 11, fontWeight: 500, color: C.textXs, letterSpacing: ".04em", paddingTop: 2 }}>{e.y}</div>
-                <div style={{ borderLeft: `2px solid ${e.c}`, paddingLeft: 18 }}>
-                  <p style={{ fontSize: 14, fontWeight: 600, color: e.c, marginBottom: 4 }}>{e.l}</p>
-                  <p style={{ fontSize: 13, color: C.textSm, lineHeight: 1.65 }}>{e.d}</p>
+                <div style={{ minWidth: 88, fontSize: 11, fontWeight: 500, color: C.textXs, letterSpacing: ".04em", paddingTop: 2, textAlign: "left" }}>{e.y}</div>
+                <div style={{ borderLeft: `2px solid ${e.c}`, paddingLeft: 18, textAlign: "left" }}>
+                  <p style={{ fontSize: 14, fontWeight: 600, color: e.c, marginBottom: 4, textAlign: "left" }}>{e.l}</p>
+                  <p style={{ fontSize: 13, color: C.textSm, lineHeight: 1.65, textAlign: "left" }}>{e.d}</p>
                 </div>
               </div>
             </Reveal>
@@ -1030,19 +1019,37 @@ function PageOver({ navigate }) {
         </Wrap>
       </section>
 
-      {/* STATS STRIP */}
-      <div style={{ background: C.orange, padding: "48px 24px" }}>
+      {/* INSPIRATIE & TRANSPIRATIE */}
+      <section style={{ background: C.navy, padding: "72px 24px" }}>
         <Wrap>
-          <div className="three-col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 28, textAlign: "center" }}>
-            {[["25+", "jaar digitale ervaring"], ["19+", "marathons gelopen"], ["50+", "features @ Heineken"]].map(([n, l]) => (
-              <div key={l}>
-                <p className="serif" style={{ fontSize: 44, fontWeight: 600, color: "#fff", lineHeight: 1 }}>{n}</p>
-                <p style={{ fontSize: 11, color: "rgba(255,255,255,.8)", marginTop: 6, fontWeight: 500, letterSpacing: ".06em", textTransform: "uppercase" }}>{l}</p>
-              </div>
+          <Reveal>
+            <Eyebrow t="Inspiratie & Transpiratie" light />
+            <H2 light size={36}>Kijk, luister & voel</H2>
+          </Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20, marginTop: 32 }} className="two-col">
+            {[
+              { title: "Dream big!", url: "https://www.youtube.com/embed/lomlpJREDzw?start=125&rel=0&modestbranding=1&color=white" },
+              { title: "Bagan Temple Marathon", url: "https://www.youtube.com/embed/OrXuaUYKjNs?start=2&rel=0&modestbranding=1&color=white" },
+              { title: "Great Wall Marathon", url: "https://www.youtube.com/embed/fsji_EHxCLI?rel=0&modestbranding=1&color=white" },
+              { title: "Bouwreis Kaapstad 2012", url: "https://www.youtube.com/embed/EoieFO93QCw?rel=0&modestbranding=1&color=white" },
+            ].map((v, i) => (
+              <Reveal key={v.title} delay={i * .1}>
+                <div style={{ borderRadius: 8, overflow: "hidden", border: `1px solid rgba(255,255,255,.1)` }}>
+                  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+                    <iframe src={v.url} title={v.title}
+                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen />
+                  </div>
+                  <div style={{ padding: "10px 14px", background: "rgba(255,255,255,.05)" }}>
+                    <p style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,.75)" }}>{v.title}</p>
+                  </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </Wrap>
-      </div>
+      </section>
 
       {/* Valencia strip */}
       <section style={{ background: C.navy, padding: "72px 24px" }}>
@@ -1071,7 +1078,7 @@ const PROJECTS = [
   { client: "Nike EMEA & APLA", color: C.navy, img: IMG.nikeTeam, period: "2018–2022", role: "Cybersecurity Program Manager", blogId: "nike",
     logo: IMG.logoNike,
     items: ["Cybersecurity team van 4 naar 17 specialisten", "Honderden risk assessments, compliance audits en application security", "M&A Playbook ontwikkeld vanuit de CISO"] },
-  { client: "Philips", color: C.orange, img: IMG.philips, period: "2009–2017", role: "Digital Project Manager / Scrum Master", blogId: "philipsecom",
+  { client: "Philips", color: C.orange, img: IMG.philips_team || IMG.philips, period: "2009–2017", role: "Digital Project Manager / Scrum Master", blogId: "philipsecom",
     logo: IMG.logoPhilips,
     items: ["eCommerce-programma: 14 landen gemigreerd naar SAP Hybris", "12 projecten in 9 maanden voor 15 Product Owners uit 4 domeinen", "Roadmap opgebouwd en uitgerold voor internationale markten"] },
   { client: "FrieslandCampina", color: C.navy, img: IMG.friesland, period: "2017–2018", role: "Project Manager Digital", blogId: "friesland",
@@ -1093,6 +1100,7 @@ function PageProjecten({ navigate }) {
         <Wrap max={760}>
           <Reveal>
             <BodyP>De dynamiek in digitale transformatie projecten is altijd enorm. De business wil "alles, gisteren en gratis". Het team wil het goed uitdenken en uitvoeren. In dat speelveld pak ik graag mijn rol en probeer ik het beste van beide werelden te combineren tot iets waar de klant het meeste waarde aan heeft.</BodyP>
+            <BodyP>Ik werk vanuit een bewezen aanpak waarbij ik als Programma/Project Manager en Scrum Master zowel de strategische richting als de dagelijkse uitvoering in balans houd. Van stakeholdermanagement tot sprint planning, van roadmap tot retrospective.</BodyP>
             <BodyP>Mijn uitgangspunt is altijd mens-, waarde- en resultaatgericht werken. Met een helicopter view en oog voor detail. En met de goede focus, flow en fun!</BodyP>
           </Reveal>
         </Wrap>
@@ -1117,11 +1125,11 @@ function PageProjecten({ navigate }) {
                       <p style={{ fontSize: 11, fontWeight: 500, color: C.textXs, letterSpacing: ".06em", textTransform: "uppercase" }}>{p.role} · {p.period}</p>
                     </div>
                     {/* Bullets */}
-                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 9, flex: 1 }}>
+                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 9, flex: 1, textAlign: "left" }}>
                       {p.items.map(item => (
-                        <li key={item} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                        <li key={item} style={{ display: "flex", gap: 10, alignItems: "flex-start", textAlign: "left" }}>
                           <span style={{ color: p.color, fontSize: 14, lineHeight: 1.5, flexShrink: 0, fontWeight: 700 }}>→</span>
-                          <span style={{ fontSize: 13, color: C.textSm, lineHeight: 1.6 }}>{item}</span>
+                          <span style={{ fontSize: 13, color: C.textSm, lineHeight: 1.6, textAlign: "left" }}>{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -1236,7 +1244,7 @@ function PageContact() {
             {/* Links — contactinfo */}
             <Reveal>
               <p style={{ fontSize: 13, lineHeight: 1.9, color: C.textSm, marginBottom: 40, maxWidth: 380 }}>
-                Bent u op zoek naar een ervaren partner in digitale transformatie? Of wilt u gewoon eens sparren over agile werken, marathons of synergie? Ik sta altijd open voor een goed gesprek.
+                Ben je op zoek naar een ervaren partner in digitale transformatie? Of wil je gewoon eens sparren over agile werken, getting things done of marathons lopen ;)? Ik sta altijd open voor een goed gesprek.
               </p>
 
               {/* Email */}
