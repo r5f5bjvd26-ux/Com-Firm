@@ -244,6 +244,7 @@ const CSS = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; min-width: 100%; }
   a { text-decoration: none; color: inherit; }
+  html, body { overflow-x: hidden; width: 100%; }
   body { font-family: 'Inter', sans-serif; background: ${C.white}; color: ${C.text}; min-width: 100%; overflow-x: hidden; }
   img { max-width: 100%; display: block; }
   @keyframes fadeDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
@@ -1024,25 +1025,25 @@ function PageOver({ navigate }) {
         <Wrap>
           <Reveal>
             <Eyebrow t="Inspiratie & Transpiratie" light />
-            <H2 light size={36}>Kijk, luister & voel</H2>
+            <H2 light size={36}>Uit de oude doos</H2>
           </Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20, marginTop: 32 }} className="two-col">
             {[
-              { title: "Dream big!", url: "https://www.youtube.com/embed/lomlpJREDzw?start=125&rel=0&modestbranding=1&color=white" },
-              { title: "Bagan Temple Marathon", url: "https://www.youtube.com/embed/OrXuaUYKjNs?start=2&rel=0&modestbranding=1&color=white" },
-              { title: "Great Wall Marathon", url: "https://www.youtube.com/embed/fsji_EHxCLI?rel=0&modestbranding=1&color=white" },
+              { title: "Dream BIG!", url: "https://www.youtube.com/embed/lomlpJREDzw?start=125&rel=0&modestbranding=1&color=white" },
+              { title: "Bagan Temple Marathon 2019", url: "https://www.youtube.com/embed/OrXuaUYKjNs?start=2&rel=0&modestbranding=1&color=white" },
+              { title: "Great Wall Marathon 2017", url: "https://www.youtube.com/embed/fsji_EHxCLI?rel=0&modestbranding=1&color=white" },
               { title: "Bouwreis Kaapstad 2012", url: "https://www.youtube.com/embed/EoieFO93QCw?rel=0&modestbranding=1&color=white" },
             ].map((v, i) => (
               <Reveal key={v.title} delay={i * .1}>
                 <div style={{ borderRadius: 8, overflow: "hidden", border: `1px solid rgba(255,255,255,.1)` }}>
+                  <div style={{ padding: "10px 14px", background: "rgba(255,255,255,.05)", borderBottom: `1px solid rgba(255,255,255,.1)` }}>
+                    <p style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,.75)" }}>{v.title}</p>
+                  </div>
                   <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
                     <iframe src={v.url} title={v.title}
                       style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen />
-                  </div>
-                  <div style={{ padding: "10px 14px", background: "rgba(255,255,255,.05)" }}>
-                    <p style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,.75)" }}>{v.title}</p>
                   </div>
                 </div>
               </Reveal>
@@ -1287,34 +1288,49 @@ function PageContact() {
                   <p style={{ fontSize: 14, color: C.textSm }}>Ik neem zo snel mogelijk contact op.</p>
                 </div>
               ) : (
-                <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+                <form
+                  action="https://formspree.io/f/paul@com-firm.com"
+                  method="POST"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    const data = new FormData(e.target);
+                    try {
+                      const res = await fetch("https://formspree.io/f/paul@com-firm.com", {
+                        method: "POST", body: data, headers: { Accept: "application/json" }
+                      });
+                      if (res.ok) setSent(true);
+                    } catch { setSent(true); }
+                  }}
+                  style={{ display: "flex", flexDirection: "column", gap: 32 }}>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
                     <div>
                       <label style={labelStyle}>Naam</label>
-                      <input type="text" placeholder="Paul ten Donkelaar" required style={fieldStyle}
+                      <input name="naam" type="text" placeholder="Paul ten Donkelaar" required style={fieldStyle}
                         onFocus={e => e.target.style.borderBottomColor = C.orange}
                         onBlur={e => e.target.style.borderBottomColor = C.border} />
                     </div>
                     <div>
                       <label style={labelStyle}>Bedrijf</label>
-                      <input type="text" placeholder="Com-Firm" style={fieldStyle}
+                      <input name="bedrijf" type="text" placeholder="Com-Firm" style={fieldStyle}
                         onFocus={e => e.target.style.borderBottomColor = C.orange}
                         onBlur={e => e.target.style.borderBottomColor = C.border} />
                     </div>
                   </div>
                   <div>
                     <label style={labelStyle}>E-mailadres</label>
-                    <input type="email" placeholder="paul@com-firm.com" required style={fieldStyle}
+                    <input name="email" type="email" placeholder="paul@com-firm.com" required style={fieldStyle}
                       onFocus={e => e.target.style.borderBottomColor = C.orange}
                       onBlur={e => e.target.style.borderBottomColor = C.border} />
                   </div>
                   <div>
                     <label style={labelStyle}>Bericht</label>
-                    <textarea rows={5} placeholder="Vertel me meer..." required
+                    <textarea name="bericht" rows={5} placeholder="Vertel me meer..." required
                       style={{ ...fieldStyle, resize: "none", lineHeight: 1.7 }}
                       onFocus={e => e.target.style.borderBottomColor = C.orange}
                       onBlur={e => e.target.style.borderBottomColor = C.border} />
                   </div>
+                  <input type="hidden" name="_subject" value="Nieuw bericht via Com-Firm.com" />
+                  <input type="text" name="_gotcha" style={{ display: "none" }} />
                   <div>
                     <button type="submit" className="btn-primary" style={{ padding: "12px 36px", fontSize: 14 }}>
                       Verstuur bericht →
@@ -1333,9 +1349,36 @@ function PageContact() {
 // ─── APP ──────────────────────────────────────────────────────────────────────
 const TOP_PAGES = ["home", "over", "projecten", "blog", "contact"];
 
+// SEO meta tags per pagina
+const PAGE_META = {
+  home:      { title: "Com-Firm | Digitale Transformatie", desc: "Paul ten Donkelaar — Programma/Project Manager & Scrum Master. Samenwerken aan digitale transformatie met focus, flow en fun." },
+  over:      { title: "Over Paul | Com-Firm", desc: "25+ jaar digitale ervaring. Van Baan en Mercedes-Benz tot Nike, Philips en Heineken. Marathonloper en lifelong learner." },
+  projecten: { title: "Projecten | Com-Firm", desc: "Digitale transformatieprojecten bij Heineken, Nike, Philips en FrieslandCampina. Mens-, waarde- en resultaatgericht." },
+  blog:      { title: "Blog | Com-Firm", desc: "Inzichten en verhalen over digitale transformatie, agile werken, marathons en meer." },
+  contact:   { title: "Contact | Com-Firm", desc: "Keertje samenwerken? Neem contact op met Paul ten Donkelaar." },
+};
+
+function useSEO(page) {
+  useEffect(() => {
+    const meta = PAGE_META[page] || { title: "Com-Firm", desc: "Digitale transformatie met focus, flow en fun." };
+    document.title = meta.title;
+    let d = document.querySelector('meta[name="description"]');
+    if (!d) { d = document.createElement('meta'); d.name = "description"; document.head.appendChild(d); }
+    d.content = meta.desc;
+    // OG tags
+    let og = document.querySelector('meta[property="og:title"]');
+    if (!og) { og = document.createElement('meta'); og.setAttribute('property','og:title'); document.head.appendChild(og); }
+    og.content = meta.title;
+  }, [page]);
+}
+
 export default function App() {
   const [page, setPage] = useState("home");
-  const navigate = (p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); };
+  const navigate = (p) => {
+    setPage(p);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "instant" }), 0);
+  };
+  useSEO(TOP_PAGES.includes(page) ? page : "blog");
 
   const render = () => {
     switch (page) {
@@ -1345,7 +1388,6 @@ export default function App() {
       case "blog":       return <PageBlog navigate={navigate} />;
       case "contact":    return <PageContact />;
       default:
-        // Dynamic post routing — any "post-{id}" is handled here
         if (page.startsWith("post-")) {
           const id = page.replace("post-", "");
           const found = ALL_POSTS.find(p => p && p.id === id);
@@ -1359,7 +1401,7 @@ export default function App() {
     <>
       <style>{CSS}</style>
       <Nav page={TOP_PAGES.includes(page) ? page : "blog"} navigate={navigate} />
-      <main>{render()}</main>
+      <main style={{ overflowX: "hidden" }}>{render()}</main>
       <Footer navigate={navigate} />
     </>
   );
